@@ -1,0 +1,330 @@
+/* =========================
+   Global base
+========================= */
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(1200px 600px at 15% 10%, rgba(99, 102, 241, 0.16), transparent 55%),
+    radial-gradient(900px 500px at 85% 15%, rgba(16, 185, 129, 0.14), transparent 55%),
+    linear-gradient(180deg, #0b0f19 0%, #070a12 100%);
+  color: rgba(255, 255, 255, 0.92);
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans TC', 'PingFang TC',
+    'Microsoft JhengHei', Arial, sans-serif;
+}
+
+/* =========================
+   Element Plus Theme Vars (關鍵)
+   用變數讓元件「整套」變暗色
+========================= */
+:root {
+  /* 背景 / 填色 */
+  --el-bg-color: rgba(10, 14, 24, 0.4);
+  --el-bg-color-overlay: rgba(10, 14, 24, 0.55);
+  --el-fill-color-blank: rgba(255, 255, 255, 0.04);
+  --el-fill-color-light: rgba(255, 255, 255, 0.06);
+  --el-fill-color: rgba(255, 255, 255, 0.08);
+
+  /* 文字 */
+  --el-text-color-primary: rgba(255, 255, 255, 0.92);
+  --el-text-color-regular: rgba(255, 255, 255, 0.82);
+  --el-text-color-secondary: rgba(255, 255, 255, 0.65);
+  --el-text-color-placeholder: rgba(255, 255, 255, 0.45);
+
+  /* 邊框 */
+  --el-border-color: rgba(255, 255, 255, 0.1);
+  --el-border-color-light: rgba(255, 255, 255, 0.08);
+  --el-border-color-lighter: rgba(255, 255, 255, 0.06);
+
+  /* Primary（你的紫藍） */
+  --el-color-primary: rgb(99, 102, 241);
+  --el-color-primary-light-3: rgba(99, 102, 241, 0.55);
+  --el-color-primary-light-5: rgba(99, 102, 241, 0.35);
+}
+
+/* =========================
+   Small component patches (讓表格/卡片穩)
+========================= */
+
+/* Card */
+.el-card {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+.el-card__header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Input / Select / Number wrapper */
+.el-input__wrapper,
+.el-select__wrapper,
+.el-input-number .el-input__wrapper {
+  background: rgba(255, 255, 255, 0.04) !important;
+  box-shadow: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+.el-input__inner,
+.el-select__selected-item {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+.el-input__inner::placeholder {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+
+/* Table（你的白底問題通常在這裡） */
+.el-table {
+  --el-table-border-color: rgba(255, 255, 255, 0.1);
+  --el-table-header-bg-color: rgba(255, 255, 255, 0.04);
+  --el-table-row-hover-bg-color: rgba(255, 255, 255, 0.04);
+  --el-table-tr-bg-color: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.02) !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+.el-table th.el-table__cell {
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+.el-table td.el-table__cell {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+/* Pagination */
+.el-pagination {
+  --el-pagination-button-bg-color: rgba(255, 255, 255, 0.04);
+  --el-pagination-hover-color: rgba(99, 102, 241, 0.9);
+}
+
+/* Tag */
+.el-tag {
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+/* Button rounding + primary tone */
+.el-button {
+  border-radius: 14px;
+}
+.el-button--primary {
+  background: rgba(99, 102, 241, 0.22) !important;
+  border-color: rgba(99, 102, 241, 0.38) !important;
+}
+.el-button.is-plain {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.el-overlay:has(.word-msgbox) {
+  background-color: rgba(15, 23, 42, 0.55) !important;
+}
+.word-msgbox {
+  --el-messagebox-bg-color: #0f172a;
+  background-color: #0f172a !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* =========================
+   Element Plus - Select / Dropdown Popper
+========================= */
+
+/* 下拉選單整體背景 */
+.el-popper.is-light {
+  background: rgba(18, 22, 34, 0.98) !important; /* 深色底 */
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(8px);
+}
+
+/* 箭頭（小三角） */
+.el-popper.is-light .el-popper__arrow::before {
+  background: rgba(18, 22, 34, 0.98) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+/* 單一選項 */
+.el-select-dropdown__item {
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+/* Hover 狀態 */
+.el-select-dropdown__item:hover {
+  background: rgba(99, 102, 241, 0.18) !important;
+  color: white !important;
+}
+
+/* 選中狀態 */
+.el-select-dropdown__item.is-selected {
+  background: rgba(99, 102, 241, 0.28) !important;
+  color: white !important;
+  font-weight: 600;
+}
+
+/* Disabled（如果有） */
+.el-select-dropdown__item.is-disabled {
+  color: rgba(255, 255, 255, 0.35) !important;
+}
+
+/* ===========================
+   Layout (Topbar + Nav)
+   =========================== */
+.layout {
+  min-height: 100vh;
+}
+
+/* Topbar */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(12px);
+  background: rgba(10, 14, 24, 0.65);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.topbar__inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.logo::after {
+  content: '';
+  position: absolute;
+  inset: -40%;
+  background: linear-gradient(45deg, rgba(99, 102, 241, 0.35), rgba(16, 185, 129, 0.25));
+  transform: rotate(18deg);
+}
+.logo__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  position: relative;
+  z-index: 1;
+}
+.logo__dot--soft {
+  width: 6px;
+  height: 6px;
+  margin-left: 8px;
+  opacity: 0.7;
+}
+
+.brand__title {
+  font-weight: 650;
+  letter-spacing: 0.2px;
+  line-height: 1.1;
+  color: rgba(255, 255, 255, 0.92);
+}
+.brand__subtitle {
+  margin-top: 2px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.topbar__right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Nav */
+.nav {
+  position: sticky;
+  top: 66px;
+  z-index: 40;
+  backdrop-filter: blur(12px);
+  background: rgba(10, 14, 24, 0.55);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.nav__inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 這段會把你紫色底線連結修掉 */
+.nav__item,
+.nav__item:visited {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.78);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.nav__item:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav__item.active {
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(99, 102, 241, 0.18);
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+.nav__spacer {
+  flex: 1;
+}
+
+/* 讓主要內容區不要被 body 漸層染色 */
+.app-shell {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 18px 16px 40px;
+
+  /* 重點：加更不透明的底色 */
+  background: rgba(10, 14, 24, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+
+  /* 視覺更舒服 */
+  backdrop-filter: blur(10px);
+}

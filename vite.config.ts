@@ -1,0 +1,23 @@
+// vite.config.ts
+import { fileURLToPath, URL } from "node:url"
+import { defineConfig } from "vite"
+import vue from "@vitejs/plugin-vue"
+import vueJsx from "@vitejs/plugin-vue-jsx"
+import vueDevTools from "vite-plugin-vue-devtools"
+
+export default defineConfig({
+  plugins: [vue(), vueJsx(), vueDevTools()],
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+  },
+  server: {
+    proxy: {
+      "^/(b\\d{4}|auth|api|user|login)": {
+        target: "http://localhost:8080",
+        changeOrigin: true,
+      },
+    },
+  },
+})
